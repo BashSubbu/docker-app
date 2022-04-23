@@ -11,4 +11,8 @@ public class MainController {
     public String getMessage(){
         return "Hello from Docker";
     }
+    @GetMapping("v1/messages")
+    public String getMessages(){
+        return "Hello from dockers";
+    }
 }
