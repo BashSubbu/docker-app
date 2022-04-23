@@ -13,6 +13,6 @@ public class MainController {
     }
     @GetMapping("v1/messages")
     public String getMessages(){
-        return "Messages from docker ";
+        return "Messages from dockers ...";
     }
 }
