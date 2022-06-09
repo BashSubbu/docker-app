@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/")
 public class MainController {
+    // more changes from feature branch 2
     @GetMapping("v1/message")
     public String getMessage(){
         return "Hello from Docker";
