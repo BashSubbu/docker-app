@@ -1,5 +1,6 @@
 package com.example.dockerapp.imports;
 
+import com.example.dockerapp.exception.GeneralException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class ImportsManager {
      * @return
      * @throws Exception
      */
-    public List<String> importProducts(MultipartFile multipartFile) throws Exception {
+    public List<String> importProducts(MultipartFile multipartFile)  {
         InputStream inputStream = null;
         List<String> digitalIdList = new ArrayList<>();
         String digitalId = null;
@@ -48,7 +49,7 @@ public class ImportsManager {
 
 
         }catch (Exception exception){
-            throw new Exception("import Product failed " + exception.getMessage());
+            throw new GeneralException("import Product failed " + exception.getMessage());
         }
 
         return digitalIdList;
