@@ -1,5 +1,6 @@
 package com.example.dockerapp.controller;
 
+import com.example.dockerapp.exception.GeneralException;
 import com.example.dockerapp.imports.ImportsManager;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,16 @@ public class MainController {
      * @throws Exception
      */
     @PostMapping("v1/import")
-    public String importProducts(@RequestParam(name = "multipartFile") MultipartFile multipartFile) throws Exception {
+    public String importProducts(@RequestParam(name = "multipartFile") MultipartFile multipartFile) {
         List<String> productIdList = null;
         Gson gson = new Gson();
         String returnText = null;
-
-        productIdList = importsManager.importProducts(multipartFile);
-        returnText = gson.toJson(productIdList);
-
+        try {
+            productIdList = importsManager.importProducts(multipartFile);
+            returnText = gson.toJson(productIdList);
+        }catch (Exception exception){
+            throw new GeneralException(" importProducts failed " + exception.getMessage());
+        }
         return returnText;
     }
 
