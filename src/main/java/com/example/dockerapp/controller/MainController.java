@@ -17,7 +17,7 @@ import java.util.List;
 public class MainController {
     @Autowired
     private ImportsManager importsManager;
-
+    // comment
     @GetMapping("/v1/message")
     public String getMessage(){
         return "Hello from Docker";
