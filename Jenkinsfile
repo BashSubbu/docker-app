@@ -8,7 +8,7 @@ pipeline {
             {
                 script {
                         echo "INFO: Build Stage"
-                        sh "docker build -t docker-app:latest"
+                        sh "docker build -t docker-app:latest ."
                         echo "INFO: docker image built"
                     }
             }
